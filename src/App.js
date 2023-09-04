@@ -1,25 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import './SliderSwitch.css'; // Import your CSS file for styling
 
-function App() {
+const App = () => {
+  const [isChecked, setIsChecked] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleToggle = () => {
+    setIsLoading(true);
+
+    setTimeout(() => {
+      setIsChecked(!isChecked);
+      setIsLoading(false);
+
+      console.log('API call with state:', isChecked ? 'on' : 'off');
+    }, 1500); // Simulate a 1.5-second API call
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={`slider-page ${isChecked ? 'slider-on' : 'slider-off'}`}>
+      <div className="loading-text">
+        {isLoading && <strong>Loading...</strong>}
+      </div>
+      <label className={`toy-toggle ${isLoading ? 'loading' : ''}`} onClick={handleToggle}>
+        <span className={`handle ${isChecked ? 'handle-on' : 'handle-off'}`}></span>
+        <span className={`slider-text ${isChecked ? 'slider-text-on' : 'slider-text-off'}`}>
+          {isChecked ? 'Checked In' : 'Checked Out'}
+        </span>
+      </label>
     </div>
   );
-}
+};
 
 export default App;

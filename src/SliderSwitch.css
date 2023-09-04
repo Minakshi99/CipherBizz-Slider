@@ -1,0 +1,72 @@
+/* Toy Toggle Switch CSS */
+.slider-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background-color: #f0f0f0;
+}
+
+.toy-toggle {
+  width: 260px; /* Width of the slider */
+  height: 80px; /* Height of the slider */
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+.handle {
+  width: 70px; /* Width of the slider handle */
+  height: 70px; /* Height of the slider handle */
+  border-radius: 50%;
+  background-color: #fff;
+  position: absolute;
+  left: 5px;
+  transition: left 0.3s ease;
+}
+
+.slider-text {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  margin: 0 10px; /* Adjust spacing from the slider */
+  position: absolute;
+  z-index: 1;
+  transition: left 0.3s ease;
+}
+
+.slider-text-on {
+  left: 10px;
+}
+
+.slider-text-off {
+  left: auto;
+  right: 10px;
+}
+
+/* Slider States */
+.slider-on .toy-toggle {
+  background-color: #88e661; /* Color when slider is ON */
+}
+
+.slider-on .handle {
+  left: calc(100% - 75px); /* Move handle to the right when slider is ON */
+}
+
+.slider-off .toy-toggle {
+  background-color: #f0f0f0; /* Color when slider is OFF */
+}
+
+.slider-off .handle {
+  left: 5px; /* Reset handle position when slider is OFF */
+}
+
+.loading-text {
+  margin-right: 50px;
+}
